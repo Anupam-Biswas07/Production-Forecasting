@@ -18,7 +18,6 @@ downtime = pd.read_csv("Downtime.csv")
 
 
 # 2. Calculate Effective Machine Capacity
-# ----------------------------
 production["Daily_Capacity"] = (production["Capacity_Per_Hour"] *
                                production["Shift_Hours"] *
                                production["No_of_Shifts"]) - production["Downtime_Hours"]
@@ -26,14 +25,14 @@ production["Daily_Capacity"] = (production["Capacity_Per_Hour"] *
 capacity_per_product = production.groupby("Product")["Daily_Capacity"].sum().reset_index()
 capacity_per_product.rename(columns={"Daily_Capacity": "Total_Daily_Capacity"}, inplace=True)
 
-# ----------------------------
+
 # 3. Merge Orders with Capacity
-# ----------------------------
+
 orders_capacity = orders.merge(capacity_per_product, on="Product", how="left")
 
-# ----------------------------
+
 # 4. Calculate Forecasted Completion Time
-# ----------------------------
+
 orders_capacity["Days_Required"] = (orders_capacity["Quantity_Ordered"] /
                                     orders_capacity["Total_Daily_Capacity"]).round(1)
 
@@ -41,14 +40,14 @@ orders_capacity["Start_Date"] = pd.to_datetime("2025-09-08")  # Assume today
 orders_capacity["Forecasted_Completion"] = orders_capacity["Start_Date"] + \
     orders_capacity["Days_Required"].apply(lambda x: timedelta(days=x))
 
-# ----------------------------
+
 # 5. Check if Orders Meet Deadline
-# ----------------------------
+
 orders_capacity["On_Time"] = orders_capacity["Forecasted_Completion"] <= orders_capacity["Delivery_Deadline"]
 
-# ----------------------------
+
 # 6. Display Final Forecast
-# ----------------------------
+
 print("\n📊 Production Forecast Summary:")
 print(orders_capacity[["Order_ID", "Product", "Quantity_Ordered",
                        "Delivery_Deadline", "Total_Daily_Capacity",
