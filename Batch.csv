@@ -1,0 +1,8 @@
+Batch_ID,Product,Batch_Size,Batch_Cycle_Time_Hours,Yield_Percent
+B01,Paracetamol,50000,5,98
+B02,Amoxicillin,30000,6,95
+B03,Cough_Syrup,20000,4,97
+,,,,
+,,,,
+,,,,
+,,,,

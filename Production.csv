@@ -1,0 +1,5 @@
+Machine_ID,Machine_Name,Product,Capacity_Per_Hour,Shift_Hours,No_of_Shifts,Downtime_Hours
+M01,Tablet_Press_1,Paracetamol,10000,8,2,4
+M02,Tablet_Press_2,Paracetamol,8000,8,3,2
+M03,Capsule_Line_1,Amoxicillin,5000,8,2,1
+M04,Syrup_Line_1,Cough_Syrup,2000,8,2,2

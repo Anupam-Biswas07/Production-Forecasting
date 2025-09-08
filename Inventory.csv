@@ -1,0 +1,5 @@
+Material_ID,Material_Name,Product,Stock_Available,Unit,Lead_Time_Days,Reorder_Level
+RM01,API_Paracetamol,Paracetamol,2000,kg,15,500
+RM02,API_Amoxicillin,Amoxicillin,1500,kg,20,400
+RM03,Syrup_Base,Cough_Syrup,5000,liters,10,1000
+RM04,Packaging_Bottle,Cough_Syrup,100000,pcs,12,20000
